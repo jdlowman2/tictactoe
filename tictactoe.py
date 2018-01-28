@@ -17,7 +17,7 @@ class Board():
             for r in row:
                 output+=str(r)
                 output += ' '
-        return output+'\n'
+        return output+'\n\n'
         
     def setValue(self, indices, val):
         if self.isLegal(indices, val):
@@ -38,11 +38,6 @@ class Board():
         
     def gameOver(self):
         winner = 0
-        # if very value of 1 row is a 1 or a 2
-        # if row1[n], row2[2], and row3[n] are all 1 or 2
-        # if row1[n], row2[n+1], row3[n+2]
-        # if row1[n], row2[n-1], row3[n-2]
-        # if every position is a 1 or 2, but no winner
         winning_combos= [[[0, 0], [1,1], [2,2]], [[0,2],[1,1], [2,0]]]
         for n in range(3):
             winning_combos.append([[n, 0], [n, 1], [n, 2]])
@@ -59,6 +54,7 @@ class Board():
         player_input = input("Choose your move by typing two numbers (row and column separate by a space) ")
 
         try:
+            player_input = player_input.strip()
             assert len(player_input) >= 3
             r, c = player_input.split(' ')
             r, c = int(r), int(c)
@@ -80,21 +76,6 @@ class Player():
     def setToken(self, token):
         # define what to place on the board
         self.token = token
-        
-
-def main():
-    boardgame = Board()
-    players = [1, 2]
-    current_player = 1
-    while not boardgame.game_over:
-        for player in players:
-            print(boardgame)
-            boardgame.playerMove(player)
-            over = boardgame.gameOver()
-            if over:
-                printWinner(player)
-                boardgame.game_over = True
-                return boardgame
                 
 def welcome():
     print(colors("RESET"))
@@ -108,11 +89,10 @@ def welcome():
     print("    |_|  |_|\___|    |_|\__,_|\___|    |_|\___/ \___|")
     print(colors("RED"))
     five_thousand = """
-    
-   ____ _  _ ___ ____ ____ _  _ ____ ||
+   ____ _  _ ___ ____ ____ _  _ ____
    |___  \/   |  |__/ |___ |\/| |___ ||
-   |___ _/\_  |  |  \ |___ |  | |___ oo
-    
+   |___ _/\_  |  |  \ |___ |  | |___ ||
+                                     oo
     """
     print(five_thousand)
     print(colors("RESET"))
@@ -131,6 +111,20 @@ def colors(colorname):
     "REVERSE":"\033[;7m"}
     return color_vals[colorname]
 
+def main():
+    boardgame = Board()
+    players = [1, 2]
+    current_player = 1
+    while not boardgame.game_over:
+        for player in players:
+            print(boardgame)
+            boardgame.playerMove(player)
+            over = boardgame.gameOver()
+            if over:
+                printWinner(player)
+                boardgame.game_over = True
+                return boardgame
+
 if __name__ == "__main__":
     welcome()
     boardgame = main()
@@ -139,7 +133,8 @@ if __name__ == "__main__":
     
 """
 TODO
-ASCII welcome art
+Invalid input moves shouldn't crash the game
+    Error handling
 Implement computer generated moves so you can play 1 player
 Testing and unit tests
 

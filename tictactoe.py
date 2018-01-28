@@ -98,16 +98,21 @@ def main():
                 
 def welcome():
     print("                                                ")
-    print("\t\   /\    /  __      __              __ ")
-    print("\t \ /  \  /  |__ |   |   |||  /\ /\  |__  ")
-    print("\t  \    \/   |__ |__ |__ ||| /  \  \ |__  ")
-    print("                                                ")
     print("  _______ _        _______           _______")
     print(" |__   __(_)      |__   __|         |__   __|")
     print("    | |   _  ___     | | __ _  ___     | | ___   ___")
     print("    | |  | |/ __|    | |/ _` |/ __|    | |/ _ \ / _ | ")
     print("    | |  | | (__     | | (_| | (__     | | (_) |  __|")
     print("    |_|  |_|\___|    |_|\__,_|\___|    |_|\___/ \___|")
+    
+    five_thousand = """
+    
+   ____ _  _ ___ ____ ____ _  _ ____
+   |___  \/   |  |__/ |___ |\/| |___
+   |___ _/\_  |  |  \ |___ |  | |___
+    
+    """
+    print(five_thousand)
 
 def printWinner(player):
     print("\nPlayer ", player, "wins!! ")
@@ -122,7 +127,7 @@ if __name__ == "__main__":
 """
 TODO
 ASCII welcome art
-Implement computer generated moves so you can play a game
-testing
+Implement computer generated moves so you can play 1 player
+Testing and unit tests
 
 """

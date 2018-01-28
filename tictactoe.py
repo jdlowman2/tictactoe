@@ -97,6 +97,8 @@ def main():
                 return boardgame
                 
 def welcome():
+    print(colors("RESET"))
+    print(colors("CYAN"))
     print("                                                ")
     print("  _______ _        _______           _______")
     print(" |__   __(_)      |__   __|         |__   __|")
@@ -104,19 +106,30 @@ def welcome():
     print("    | |  | |/ __|    | |/ _` |/ __|    | |/ _ \ / _ | ")
     print("    | |  | | (__     | | (_| | (__     | | (_) |  __|")
     print("    |_|  |_|\___|    |_|\__,_|\___|    |_|\___/ \___|")
-    
+    print(colors("RED"))
     five_thousand = """
     
-   ____ _  _ ___ ____ ____ _  _ ____
-   |___  \/   |  |__/ |___ |\/| |___
-   |___ _/\_  |  |  \ |___ |  | |___
+   ____ _  _ ___ ____ ____ _  _ ____ ||
+   |___  \/   |  |__/ |___ |\/| |___ ||
+   |___ _/\_  |  |  \ |___ |  | |___ oo
     
     """
     print(five_thousand)
+    print(colors("RESET"))
 
 def printWinner(player):
     print("\nPlayer ", player, "wins!! ")
     print('\n')
+
+def colors(colorname):
+    color_vals = {"RED":"\033[1;31m",
+    "BLUE":"\033[1;34m",
+    "CYAN":"\033[1;36m",
+    "GREEN":"\033[0;32m",
+    "RESET":"\033[0;0m",
+    "BOLD":"\033[;1m",
+    "REVERSE":"\033[;7m"}
+    return color_vals[colorname]
 
 if __name__ == "__main__":
     welcome()
